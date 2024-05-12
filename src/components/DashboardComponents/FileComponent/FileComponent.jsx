@@ -54,7 +54,7 @@ console.log(currentFile.docId+"fileId from filecomponent");
       <h4 >File Opened in New Tab</h4>
       <h4 className='phone-msg'>File is Downloaded</h4>
       <div>
-      <button className='glow-on-hover bottom-space' onClick={() => navigate(-1)}>
+      <button className='btnNew bottom-space' onClick={() => navigate(-1)}>
               Go Back ! 😎
             </button>
             </div>
