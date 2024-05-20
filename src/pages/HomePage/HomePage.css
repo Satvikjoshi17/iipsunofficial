@@ -1,4 +1,30 @@
 /* HomePage.css */
+/* HomePage.css */
+
+/* Hide the main content on smaller screens */
+@media (max-width: 768px) {
+  .desktop-content {
+    display: none;
+  }
+  
+  .mobile-message {
+    display: block;
+    text-align: center;
+    font-size: 1.2em;
+    padding: 20px;
+  }
+}
+
+/* Show the main content on larger screens */
+@media (min-width: 769px) {
+  .desktop-content {
+    display: block;
+  }
+  
+  .mobile-message {
+    display: none;
+  }
+}
 
 body, html {
   margin: 0;
