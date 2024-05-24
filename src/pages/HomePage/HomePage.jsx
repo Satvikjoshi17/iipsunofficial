@@ -239,7 +239,7 @@ const HomePage = () => {
                         <p className="parea3">
                         ➡️ Spent time in making your own notes but no use after
                           exam? Don't worry, help needy juniors by sharing with
-                          us. We will mention you on the website for contributions.
+                          us.
                         </p>
                       </div>
                     </div>
