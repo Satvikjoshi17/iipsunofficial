@@ -5,7 +5,7 @@ import './Aboutus.css';
 const AboutUs = () => {
   return (
     <>
-      <Navbar />
+     <Navbar />
       <div className="about-us-container">
         <h2>Our Team</h2>
 

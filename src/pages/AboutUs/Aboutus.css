@@ -83,7 +83,10 @@ h3 {
   h2 {
     font-size: 30px !important; /* Adjusted font size for smaller screens */
   }
-
+.team-members {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
   .team-member {
     flex: 1 0 100%; /* Allow team members to take full width on smaller screens */
     max-width: 80%; /* Set a maximum width of 100% for team members on smaller screens */

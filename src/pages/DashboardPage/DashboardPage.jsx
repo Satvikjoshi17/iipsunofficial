@@ -80,8 +80,6 @@ const DashboardPage = () => {
           </div>
 
 
-
-
           {currentFolder === "root" ? (
             <p className='search-ins'>Please use Ctrl+F to search your subject !</p>
 

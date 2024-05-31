@@ -65,6 +65,7 @@
 @media (max-width: 768px) {
   .contributors-table {
     width: 100%; /* Adjusted width for smaller screens */
+    margin-top: -90px;
   }
 
   .contributors-table th,

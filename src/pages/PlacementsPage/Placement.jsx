@@ -7,7 +7,7 @@ const Placement = () => {
 
   // State to store placement data
   const [placementData, setplacementData] = useState([]);
-
+ 
   // Function to fetch data from the Google Sheets API
   const fetchplacementData = async () => {
     try {
@@ -50,13 +50,9 @@ const Placement = () => {
 
   return (
 
-
-
-
     <>
       <Navbar />
-      <div class="content-below-navbar">
-
+      <div className="content-below-navbar">
       </div>
       <img src="/assets/hero2.png" loading="lazy" alt="IIPS Logo" className='main-img' />
       <div className='info2'>
@@ -154,7 +150,6 @@ const Placement = () => {
                 </div>
               </div>
             </div>
-
 
 
           </div>

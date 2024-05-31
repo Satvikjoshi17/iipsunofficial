@@ -17,12 +17,7 @@ html {
   line-height: 1.8;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .footer-area .footer-pera p {
-    padding-right: 0px;
-  }
-}
-
+ 
 .footer-area .footer-tittle h4 {
   color: #fff;
   font-size: 22px;
@@ -113,4 +108,37 @@ html {
 
 .footer-bg {
   background: #673ab7;
+}
+
+
+@media (max-width: 768px) {
+  .footer-area .footer-tittle h4 {
+    text-align: center;
+   font-weight: bold;
+    font-size: 25px;
+  }
+  .footer-area .footer-tittle ul li  {
+    text-align: center;
+  }
+  .footer-area .footer-tittle ul li a {
+    font-size: 17px;
+  }
+  .footer-area .footer-pera p {
+    text-align: center;
+    font-size: 17px;
+  }
+  .footer-pera{
+    padding-left: 50px;
+    margin-bottom: -20px;
+  }
+  .footer-bottom-area .footer-copy-right p {
+    text-align: center;
+  }
+  .footer-social {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .footer-text {
+    padding-left: 100px;
+  }
 }

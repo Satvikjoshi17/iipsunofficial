@@ -75,3 +75,19 @@ body,html{
     background-color: #5274ff;
   }
   
+  @media screen and (max-width: 768px) {
+    .event-heading{
+      font-size: 50px;
+    }
+    .event-container {
+      flex-direction: column;
+    }
+  
+    .event-image {
+      width: 100%;
+    }
+  
+    .event-details {
+      width: 100%;
+    }
+  }
