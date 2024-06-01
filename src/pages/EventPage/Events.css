@@ -75,10 +75,10 @@ body,html{
     background-color: #5274ff;
   }
   
-  @media screen and (max-width: 768px) {
-    .event-heading{
-      font-size: 50px;
-    }
+ @media screen and (max-width: 768px) {
+  .event-heading{
+    font-size: 50px;
+  }
     .event-container {
       flex-direction: column;
     }
@@ -90,4 +90,10 @@ body,html{
     .event-details {
       width: 100%;
     }
+    .left-it{
+      margin-left: 0px !important;
+      padding-left: 100px !important;
+    }
   }
+  
+   

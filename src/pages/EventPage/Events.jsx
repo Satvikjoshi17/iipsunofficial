@@ -3,7 +3,7 @@ import './Events.css'; // Import your CSS file
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
 import { Link } from 'react-router-dom';
-const Events = () => {
+const Events = () => { 
   return (
     <>
       <Navbar />
@@ -54,7 +54,7 @@ const Events = () => {
          
 
         </div>
-        <Link to='https://iips.edu.in/event.php' target='_blank' class="btnNew"  style={{marginLeft:576+"px"}}>Explore All Events !</Link>
+        <Link to='https://iips.edu.in/event.php' target='_blank' class="btnNew left-it"  style={{marginLeft:576+"px"}}>Explore All Events !</Link>
       <Footer />
     </>
   );
