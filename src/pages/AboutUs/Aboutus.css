@@ -32,11 +32,11 @@ h2 {
 .team-member {
   flex: 1;
   margin: 20px;
-  max-width: 250px; /* Set a maximum width for team members on smaller screens */
+   /* Set a maximum width for team members on smaller screens */
 }
 
 .team-member img {
-  width: 100%;
+  width: 70%;
   height: auto;
   border-radius: 50%;
   margin-bottom: 10px;

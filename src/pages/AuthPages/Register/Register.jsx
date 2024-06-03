@@ -37,6 +37,15 @@ const Register = () => {
   return (
     <>
     <Navbar/>
+    <div className="content-below-navbar">
+      </div>
+      <img src="/assets/hero2.png" loading="lazy" alt="IIPS Logo" className='main-img' />
+      <div className='info2'>
+        <h1>Register </h1>
+        <p>Home | Register</p>
+
+
+      </div>
     <div className='login-container'>
     <div className='login-content'>
       <h1 className='login-heading'>Register</h1>
