@@ -58,7 +58,7 @@ const AboutUs = () => {
         </div>
         <div className='want-to'>
           Want to Join us ! ok
-          <div className='to'> <a className='btnNew' href="https://www.linkedin.com/in/ashish-rai-404-error/" target='_blank'>Drop Dm Here</a>
+          <div className='to'> <a className='btnNew' href="https://www.linkedin.com/in/sanyam-jain-874892201/" target='_blank'>Drop Dm Here</a>
                 </div>
         </div>
       </div>
