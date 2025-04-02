@@ -44,11 +44,11 @@ const DashboardPage = () => {
   }, [isLoggedIn, navigate]);
 
   useEffect(() => {
-    if (isLoading && userId) {
+    if (userId) {
       dispatch(getFolders(userId));
       dispatch(getFiles(userId));
     }
-  }, [isLoading, userId, dispatch]);
+  }, []);
 
   useEffect(() => {
     if (pathname.includes('/file/')) {
