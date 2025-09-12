@@ -43,7 +43,7 @@ const Navbar = () => {
         {/* Hamburger */}
         <div
           className={`hamburger ${menuOpen ? "open" : ""}`}
-          onClick={() => setMenuOpen(!menuOpen)}  {/* ✅ toggle works both ways */}
+          onClick={() => setMenuOpen(!menuOpen)}  
         >
           <span className="bar"></span>
           <span className="bar"></span>
