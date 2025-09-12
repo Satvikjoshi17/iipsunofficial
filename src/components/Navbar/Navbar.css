@@ -1,86 +1,67 @@
-/* Reset */
+/* Navbar Base */
 body {
   margin: 0;
   padding: 0;
 }
 
-/* Navbar */
 .navbar {
-  height: 70px;
-  background: linear-gradient(to right, #ffffff, #f8faff);
-  border-bottom: 1px solid #e5e7eb;
+  height: 80px;
+  background: linear-gradient(to right, #c054ff 0%, #5274ff 100%);
   padding: 0 20px;
   width: 100%;
   position: fixed !important;
   top: 0 !important;
-  left: 0;
   z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/* Desktop container */
-.navbar-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex: 1;
-}
-
-.navbar-links {
-  display: flex;
-  gap: 20px;
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin: 0 12px;
+  font-weight: 600;
 }
 
 .navbar-brand {
-  font-weight: 600;
-  font-size: 1em;
-  color: #333;
-  text-decoration: none;
-  transition: color 0.3s ease;
+  font-size: 18px;
+  transition: color 0.3s;
 }
 .navbar-brand:hover {
-  color: #5274ff;
+  color: #ffd166;
 }
 
-/* User section */
+/* Navbar container */
+.navbar-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.navbar-links {
+  display: flex;
+  gap: 15px;
+}
+
+/* Auth / User */
 .navbar-nav {
   list-style: none;
   display: flex;
   align-items: center;
   margin: 0;
-  gap: 10px;
 }
 .user-welcome {
   margin: 0;
   font-size: 1em;
-  font-weight: 600;
+  font-weight: bolder;
 }
 .user-name {
-  color: #5274ff;
-  font-weight: bold;
-  font-size: 1.1em;
+  color: #ffd166;
+  margin-right: 8px;
 }
 .user-icon {
-  margin-left: 6px;
   height: 32px;
   width: auto;
-}
-
-/* Buttons */
-.btnNew {
-  background: #5274ff;
-  color: #fff;
-  padding: 6px 14px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-size: 0.9em;
-  font-weight: 600;
-  transition: background 0.3s ease;
-}
-.btnNew:hover {
-  background: #3656d4;
 }
 
 /* Hamburger */
@@ -90,88 +71,51 @@ body {
   cursor: pointer;
   position: absolute;
   right: 20px;
-  top: 22px;
-  z-index: 1100;
 }
 .bar {
   height: 3px;
   width: 25px;
-  background-color: #333;
+  background-color: white;
   margin: 4px 0;
   transition: 0.4s;
 }
-.bar.open:nth-child(1) {
+.hamburger.open .bar:nth-child(1) {
   transform: rotate(-45deg) translate(-5px, 6px);
 }
-.bar.open:nth-child(2) {
+.hamburger.open .bar:nth-child(2) {
   opacity: 0;
 }
-.bar.open:nth-child(3) {
+.hamburger.open .bar:nth-child(3) {
   transform: rotate(45deg) translate(-5px, -6px);
 }
 
-/* Overlay */
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 999;
-}
-
-/* Side Menu */
-.side-menu {
-  position: fixed;
-  top: 0;
-  right: -300px;
-  width: 260px;
-  height: 100vh;
-  background: #fff;
-  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  transition: right 0.3s ease;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.side-menu.open {
-  right: 0;
-}
-.side-menu .navbar-links {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-top: 40px;
-}
-.side-menu .navbar-brand {
-  font-size: 1.1em;
-  font-weight: 600;
-  color: #333;
-  text-decoration: none;
-}
-.side-menu .navbar-brand:hover {
-  color: #5274ff;
-}
-.side-menu .navbar-nav {
-  display: flex;
-  flex-direction: column;
-  margin-top: auto;
-  gap: 10px;
-}
-.side-menu .btnNew {
-  width: 100%;
-  text-align: center;
-}
-
-/* Responsive */
+/* Responsive Drawer */
 @media (max-width: 992px) {
-  .navbar-container {
-    display: none; /* hide desktop menu */
-  }
   .hamburger {
     display: flex;
+  }
+  .navbar-container {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    height: 100vh;
+    width: 220px;
+    background: rgba(0, 0, 0, 0.95);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 80px 20px;
+    gap: 20px;
+    transition: right 0.3s ease-in-out;
+  }
+  .navbar-container.open {
+    right: 0;
+  }
+  .navbar-links {
+    flex-direction: column;
+    width: 100%;
+  }
+  .navbar-nav {
+    flex-direction: column;
+    margin-top: auto;
   }
 }
