@@ -21,13 +21,13 @@ const Navbar = () => {
         target="_blank"
         rel="noreferrer"
         className="footer-text"
-        style={{ marginLeft: "50px" }}
+        style={{ marginLeft: "20px" }}
       >
         <img src="/assets/favicon.ico" alt="Davv Logo" className="footer-logo" />{" "}
         IIPS
       </a>
 
-      {/* Hamburger Button */}
+      {/* Hamburger (only visible on mobile) */}
       <div
         className={`hamburger ${menuOpen ? "open" : ""}`}
         onClick={() => setMenuOpen(!menuOpen)}
@@ -37,84 +37,37 @@ const Navbar = () => {
         <span className="bar"></span>
       </div>
 
-      {/* Side Panel Menu */}
-      <div className={`side-menu ${menuOpen ? "active" : ""}`}>
-        <button className="close-btn" onClick={() => setMenuOpen(false)}>
-          ✕
-        </button>
-        <Link to="/" onClick={() => setMenuOpen(false)}>
-          Home
-        </Link>
-        <Link to={isAuthenticated ? "/dashboard" : "/login"} onClick={() => setMenuOpen(false)}>
-          Academics
-        </Link>
-        <Link to="/placement" onClick={() => setMenuOpen(false)}>
-          Placement
-        </Link>
-        <Link to="/events" onClick={() => setMenuOpen(false)}>
-          Events
-        </Link>
-        <Link to="/aboutus" onClick={() => setMenuOpen(false)}>
-          About
-        </Link>
-        <Link to="/our-contributers" onClick={() => setMenuOpen(false)}>
-          Contributors
-        </Link>
-      </div>
-
-      {/* Desktop Nav */}
-      <div className="navbar-container">
-        <div className="navbar-links">
-          {location.pathname === "/" ? (
-            <Link className="navbar-brand" to={isAuthenticated ? "/dashboard" : "/login"}>
-              Academics
-            </Link>
-          ) : (
-            <Link className="navbar-brand" to="/">
-              Home
-            </Link>
-          )}
-          <Link className="navbar-brand" to="/placement">
-            Placement
-          </Link>
-          <Link className="navbar-brand" to="/events">
-            Events
-          </Link>
-          <Link className="navbar-brand" to="/aboutus">
-            About
-          </Link>
-          <Link className="navbar-brand" to="/our-contributers">
-            Contributors
-          </Link>
-        </div>
-      </div>
-
-      {/* Auth Buttons */}
-      <ul className="navbar-nav">
-        {isAuthenticated ? (
-          <li className="nav-item">
-            <p className="user-welcome">
-              <span className="user-name">{user.displayName?.toUpperCase()}</span>
-              <img className="user-icon" src="/assets/user-icon.png" alt="Admin" />
-            </p>
-          </li>
+      {/* Links (same set for desktop + mobile) */}
+      <div className={`nav-links ${menuOpen ? "active" : ""}`}>
+        {location.pathname === "/" ? (
+          <Link to={isAuthenticated ? "/dashboard" : "/login"}>Academics</Link>
         ) : (
-          <>
-            <li className="nav-item">
-              <Link className="btnNew" to="/login" onClick={() => setMenuOpen(false)}>
-                Sign In
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="btnNew" to="/Register" onClick={() => setMenuOpen(false)}>
-                Sign Up
-              </Link>
-            </li>
-          </>
+          <Link to="/">Home</Link>
         )}
-      </ul>
+        <Link to="/placement">Placement</Link>
+        <Link to="/events">Events</Link>
+        <Link to="/aboutus">About</Link>
+        <Link to="/our-contributers">Contributors</Link>
 
-      {/* Overlay (click outside to close) */}
+        {/* Auth buttons */}
+        {isAuthenticated ? (
+          <p className="user-welcome">
+            <span className="user-name">{user.displayName?.toUpperCase()}</span>
+            <img className="user-icon" src="/assets/user-icon.png" alt="Admin" />
+          </p>
+        ) : (
+          <div className="auth-btns">
+            <Link className="btnNew" to="/login">
+              Sign In
+            </Link>
+            <Link className="btnNew" to="/register">
+              Sign Up
+            </Link>
+          </div>
+        )}
+      </div>
+
+      {/* Overlay for mobile (click outside to close) */}
       {menuOpen && <div className="overlay" onClick={() => setMenuOpen(false)} />}
     </nav>
   );
