@@ -1,4 +1,4 @@
-/* Reset body */
+/* Reset */
 body {
   margin: 0;
   padding: 0;
@@ -7,8 +7,8 @@ body {
 /* Navbar */
 .navbar {
   height: 70px;
-  background: linear-gradient(to right, #ffffff, #f0f4ff);
-  border-bottom: 1px solid #ddd;
+  background: linear-gradient(to right, #ffffff, #f8faff);
+  border-bottom: 1px solid #e5e7eb;
   padding: 0 20px;
   width: 100%;
   position: fixed !important;
@@ -17,69 +17,58 @@ body {
   z-index: 9999;
   display: flex;
   align-items: center;
-}
-
-/* Brand */
-.navbar > a {
-  font-size: 20px;
-  font-weight: bold;
-  color: #333;
-  text-decoration: none;
-}
-
-.navbar-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  flex: 1;
-  display: flex;
   justify-content: space-between;
+}
+
+/* Desktop container */
+.navbar-container {
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  flex: 1;
 }
 
 .navbar-links {
   display: flex;
-  gap: 15px;
+  gap: 20px;
 }
 
 .navbar-brand {
   font-weight: 600;
   font-size: 1em;
   color: #333;
+  text-decoration: none;
   transition: color 0.3s ease;
 }
-
 .navbar-brand:hover {
   color: #5274ff;
 }
 
-/* User / Auth buttons */
+/* User section */
 .navbar-nav {
   list-style: none;
   display: flex;
   align-items: center;
   margin: 0;
+  gap: 10px;
 }
-
 .user-welcome {
   margin: 0;
   font-size: 1em;
   font-weight: 600;
-  padding: 5px;
 }
-
 .user-name {
   color: #5274ff;
   font-weight: bold;
   font-size: 1.1em;
 }
-
 .user-icon {
-  margin-left: 8px;
+  margin-left: 6px;
   height: 32px;
   width: auto;
 }
 
-/* Sign-in / Sign-up buttons */
+/* Buttons */
 .btnNew {
   background: #5274ff;
   color: #fff;
@@ -89,9 +78,7 @@ body {
   font-size: 0.9em;
   font-weight: 600;
   transition: background 0.3s ease;
-  margin-left: 10px;
 }
-
 .btnNew:hover {
   background: #3656d4;
 }
@@ -104,9 +91,8 @@ body {
   position: absolute;
   right: 20px;
   top: 22px;
-  z-index: 10000;
+  z-index: 1100;
 }
-
 .bar {
   height: 3px;
   width: 25px;
@@ -114,7 +100,6 @@ body {
   margin: 4px 0;
   transition: 0.4s;
 }
-
 .bar.open:nth-child(1) {
   transform: rotate(-45deg) translate(-5px, 6px);
 }
@@ -125,39 +110,67 @@ body {
   transform: rotate(45deg) translate(-5px, -6px);
 }
 
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+}
+
+/* Side Menu */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 260px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  transition: right 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.side-menu.open {
+  right: 0;
+}
+.side-menu .navbar-links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 40px;
+}
+.side-menu .navbar-brand {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #333;
+  text-decoration: none;
+}
+.side-menu .navbar-brand:hover {
+  color: #5274ff;
+}
+.side-menu .navbar-nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  gap: 10px;
+}
+.side-menu .btnNew {
+  width: 100%;
+  text-align: center;
+}
+
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .navbar-container {
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    flex-direction: column;
-    display: none;
-    text-align: center;
-    background: #ffffff;
-    border-bottom: 1px solid #ddd;
+    display: none; /* hide desktop menu */
   }
-
-  .navbar-container.open {
-    display: flex;
-  }
-
-  .navbar-links {
-    flex-direction: column;
-    width: 100%;
-    padding: 10px 0;
-  }
-
-  .navbar-nav {
-    flex-direction: column;
-    padding: 10px 0;
-  }
-
-  .nav-item {
-    margin: 10px 0;
-  }
-
   .hamburger {
     display: flex;
   }
