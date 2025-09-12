@@ -1,9 +1,14 @@
-/* Navbar.css */
+/* Reset body */
+body {
+  margin: 0;
+  padding: 0;
+}
 
-/* Default styles */
+/* Navbar */
 .navbar {
-  height: 80px;
-  background: linear-gradient(to bottom, #c054ff 0%, #5274ff 100%);
+  height: 70px;
+  background: linear-gradient(to right, #ffffff, #f0f4ff);
+  border-bottom: 1px solid #ddd;
   padding: 0 20px;
   width: 100%;
   position: fixed !important;
@@ -14,8 +19,12 @@
   align-items: center;
 }
 
+/* Brand */
 .navbar > a {
-  font-size: 22px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
 }
 
 .navbar-container {
@@ -25,13 +34,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: all 0.3s ease;
-}
-
-.navbar-container.open {
-  background-color: rgba(0, 0, 0, 0.95);
-  border-radius: 8px;
-  padding: 20px;
 }
 
 .navbar-links {
@@ -39,117 +41,102 @@
   gap: 15px;
 }
 
+.navbar-brand {
+  font-weight: 600;
+  font-size: 1em;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: #5274ff;
+}
+
+/* User / Auth buttons */
 .navbar-nav {
   list-style: none;
   display: flex;
   align-items: center;
   margin: 0;
-  font-weight: bold;
-}
-
-.navbar-brand {
-  font-weight: bolder;
-  color: white;
-  font-size: 1.6em;
-}
-
-.nav-item {
-  display: inline-block;
 }
 
 .user-welcome {
   margin: 0;
-  font-size: 1.1em;
-  font-weight: bolder;
-  padding: 8px;
+  font-size: 1em;
+  font-weight: 600;
+  padding: 5px;
 }
 
 .user-name {
-  color: #ffc107;
-  font-size: 1.2em;
-  font-weight: bolder;
-}
-
-li img {
-  height: 25px;
-  width: auto;
+  color: #5274ff;
+  font-weight: bold;
+  font-size: 1.1em;
 }
 
 .user-icon {
-  padding-left: 5px;
-  height: 35px;
+  margin-left: 8px;
+  height: 32px;
   width: auto;
 }
 
-.navbar a {
-  color: white;
+/* Sign-in / Sign-up buttons */
+.btnNew {
+  background: #5274ff;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 6px;
   text-decoration: none;
-  margin: 0 10px;
-  transition: color 0.2s ease;
+  font-size: 0.9em;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  margin-left: 10px;
 }
 
-.navbar a:hover {
-  color: #ffc107;
+.btnNew:hover {
+  background: #3656d4;
 }
 
-/* Hamburger menu styles */
+/* Hamburger */
 .hamburger {
   display: none;
   flex-direction: column;
   cursor: pointer;
   position: absolute;
   right: 20px;
-  top: 28px;
+  top: 22px;
   z-index: 10000;
 }
 
 .bar {
   height: 3px;
   width: 25px;
-  background-color: white;
+  background-color: #333;
   margin: 4px 0;
   transition: 0.4s;
 }
 
-/* Change to X icon */
 .bar.open:nth-child(1) {
   transform: rotate(-45deg) translate(-5px, 6px);
 }
-
 .bar.open:nth-child(2) {
   opacity: 0;
 }
-
 .bar.open:nth-child(3) {
   transform: rotate(45deg) translate(-5px, -6px);
 }
 
-/* Responsive styles */
-@media (max-width: 992px) {
-  .navbar {
-    height: 70px;
-    padding: 0 15px;
-  }
-
-  .navbar > a {
-    font-size: 20px;
-  }
-
-  .navbar-links {
-    gap: 10px;
-  }
-}
-
+/* Responsive */
 @media (max-width: 768px) {
   .navbar-container {
     position: absolute;
-    top: 80px;
+    top: 70px;
     left: 0;
     width: 100%;
     flex-direction: column;
     display: none;
     text-align: center;
-    background: rgba(0, 0, 0, 0.95);
+    background: #ffffff;
+    border-bottom: 1px solid #ddd;
   }
 
   .navbar-container.open {
@@ -159,22 +146,16 @@ li img {
   .navbar-links {
     flex-direction: column;
     width: 100%;
+    padding: 10px 0;
   }
 
   .navbar-nav {
-    flex-direction: column !important;
-    width: 100%;
-    padding: 0;
+    flex-direction: column;
+    padding: 10px 0;
   }
 
   .nav-item {
-    margin: 15px 0;
-    text-align: center;
-  }
-
-  .user-name {
     margin: 10px 0;
-    font-size: 1em;
   }
 
   .hamburger {
