@@ -1,155 +1,110 @@
-import { Link, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { useState, useEffect, useRef } from 'react';
-import './Navbar.css';
+import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useState, useEffect, useRef } from "react";
+import "./Navbar.css";
 
 const Navbar = () => {
   const { isAuthenticated, user } = useSelector((state) => state.auth);
   const location = useLocation();
+
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
-  const closeMenu = () => setMenuOpen(false);
-
   // Close menu when clicking outside
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (menuRef.current && !menuRef.current.contains(e.target)) {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
         setMenuOpen(false);
       }
     };
-    if (menuOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [menuOpen]);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  // Close menu when navigating
+  const handleLinkClick = () => {
+    setMenuOpen(false);
+  };
 
   return (
     <nav className="navbar">
-      {/* Brand / Logo */}
       <a
         href="https://www.dauniv.ac.in/"
         target="_blank"
         rel="noreferrer"
         className="footer-text"
-        style={{ marginLeft: '50px', display: 'flex', alignItems: 'center' }}
+        style={{ marginLeft: "20px" }}
       >
         <img src="/assets/favicon.ico" alt="Davv Logo" className="footer-logo" />
-        <span style={{ marginLeft: '8px', fontWeight: 'bold', color: '#333' }}>IIPS</span>
+        IIPS
       </a>
 
-      {/* Desktop Links */}
-      <div className="navbar-container">
+      {/* Hamburger */}
+      <div
+        className={`hamburger ${menuOpen ? "open" : ""}`}
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        <span className="bar"></span>
+        <span className="bar"></span>
+        <span className="bar"></span>
+      </div>
+
+      {/* Navbar Links */}
+      <div
+        ref={menuRef}
+        className={`navbar-container ${menuOpen ? "open" : ""}`}
+      >
         <div className="navbar-links">
-          {location.pathname === '/' ? (
-            <Link className="navbar-brand" to={isAuthenticated ? '/dashboard' : '/login'}>
+          {location.pathname === "/" ? (
+            <Link className="navbar-brand" to={isAuthenticated ? "/dashboard" : "/login"} onClick={handleLinkClick}>
               Academics
             </Link>
           ) : (
-            <Link className="navbar-brand" to="/">
+            <Link className="navbar-brand" to="/" onClick={handleLinkClick}>
               Home
             </Link>
           )}
-          <Link className="navbar-brand" to="/placement">
+          <Link className="navbar-brand" to="/placement" onClick={handleLinkClick}>
             Placement
           </Link>
-          <Link className="navbar-brand" to="/events">
+          <Link className="navbar-brand" to="/events" onClick={handleLinkClick}>
             Events
           </Link>
-          <Link className="navbar-brand" to="/aboutus">
+          <Link className="navbar-brand" to="/aboutus" onClick={handleLinkClick}>
             About
           </Link>
-          <Link className="navbar-brand" to="/our-contributers">
+          <Link className="navbar-brand" to="/our-contributers" onClick={handleLinkClick}>
             Contributors
           </Link>
         </div>
+      </div>
 
-        <ul className="navbar-nav">
-          {isAuthenticated ? (
+      {/* Auth Section */}
+      <ul className="navbar-nav">
+        {isAuthenticated ? (
+          <li className="nav-item">
+            <p className="user-welcome">
+              <span className="user-name">{user.displayName?.toUpperCase()}</span>
+              <img className="user-icon" src="/assets/user-icon.png" alt="Admin" />
+            </p>
+          </li>
+        ) : (
+          <>
             <li className="nav-item">
-              <p className="user-welcome">
-                <span className="user-name">{user.displayName?.toUpperCase()}</span>
-                <img className="user-icon" src="/assets/user-icon.png" alt="Admin" />
-              </p>
+              <Link className="btnNew" to="/login" onClick={handleLinkClick}>
+                Sign In
+              </Link>
             </li>
-          ) : (
-            <>
-              <li className="nav-item">
-                <Link className="btnNew" to="/login">
-                  Sign In
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="btnNew" to="/Register">
-                  Sign Up
-                </Link>
-              </li>
-            </>
-          )}
-        </ul>
-      </div>
-
-      {/* Hamburger (mobile only) */}
-      <div className="hamburger" onClick={toggleMenu}>
-        <div className={`bar ${menuOpen ? 'open' : ''}`} />
-        <div className={`bar ${menuOpen ? 'open' : ''}`} />
-        <div className={`bar ${menuOpen ? 'open' : ''}`} />
-      </div>
-
-      {/* Overlay */}
-      {menuOpen && <div className="overlay" onClick={closeMenu}></div>}
-
-      {/* Side Menu (mobile) */}
-      <div ref={menuRef} className={`side-menu ${menuOpen ? 'open' : ''}`}>
-        <div className="navbar-links">
-          {location.pathname === '/' ? (
-            <Link className="navbar-brand" to={isAuthenticated ? '/dashboard' : '/login'} onClick={closeMenu}>
-              Academics
-            </Link>
-          ) : (
-            <Link className="navbar-brand" to="/" onClick={closeMenu}>
-              Home
-            </Link>
-          )}
-          <Link className="navbar-brand" to="/placement" onClick={closeMenu}>
-            Placement
-          </Link>
-          <Link className="navbar-brand" to="/events" onClick={closeMenu}>
-            Events
-          </Link>
-          <Link className="navbar-brand" to="/aboutus" onClick={closeMenu}>
-            About
-          </Link>
-          <Link className="navbar-brand" to="/our-contributers" onClick={closeMenu}>
-            Contributors
-          </Link>
-        </div>
-
-        <ul className="navbar-nav">
-          {isAuthenticated ? (
             <li className="nav-item">
-              <p className="user-welcome">
-                <span className="user-name">{user.displayName?.toUpperCase()}</span>
-                <img className="user-icon" src="/assets/user-icon.png" alt="Admin" />
-              </p>
+              <Link className="btnNew" to="/Register" onClick={handleLinkClick}>
+                Sign Up
+              </Link>
             </li>
-          ) : (
-            <>
-              <li className="nav-item">
-                <Link className="btnNew" to="/login" onClick={closeMenu}>
-                  Sign In
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="btnNew" to="/Register" onClick={closeMenu}>
-                  Sign Up
-                </Link>
-              </li>
-            </>
-          )}
-        </ul>
-      </div>
+          </>
+        )}
+      </ul>
     </nav>
   );
 };
