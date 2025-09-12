@@ -68,27 +68,43 @@ a { text-decoration: none; }
 .btnNew:hover { opacity: 0.95; }
 
 /* Hamburger (hidden on desktop) */
+/* Hamburger (mobile) - ensure vertical stacked bars */
 .hamburger {
-  display: none;
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-  padding: 8px;
+  display: none;                /* shown only on mobile via media query */
+  flex-direction: column;       /* stack bars vertically */
   align-items: center;
   justify-content: center;
+  gap: 6px;                     /* spacing between bars */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1301;
 }
+
+/* Each bar is a horizontal stripe */
 .hamburger .bar {
-  
-  height: 3px;
-  width: 26px;
-  margin: 4px 0;
-  background: white;
+  display: block;
+  width: 26px;                  /* length of the bar */
+  height: 3px;                  /* thickness */
+  border-radius: 3px;
+  background-color: white;      /* adjust color if needed */
   transition: transform 200ms ease, opacity 200ms ease;
-  border-radius: 2px;
 }
-.hamburger.open .bar:nth-child(1) { transform: translateY(7px) rotate(-45deg); }
-.hamburger.open .bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.hamburger.open .bar:nth-child(3) { transform: translateY(-7px) rotate(45deg); }
+
+/* Animated X state */
+.hamburger.open .bar:nth-child(1) {
+  transform: translateY(6px) rotate(-45deg);
+}
+.hamburger.open .bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.hamburger.open .bar:nth-child(3) {
+  transform: translateY(-6px) rotate(45deg);
+}
+
+
 
 /* Overlay (when panel open) */
 .overlay {
