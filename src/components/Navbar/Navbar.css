@@ -7,45 +7,134 @@ a { text-decoration: none; }
 :root { --nav-h: 70px; --panel-w: 280px; }
 
 /* Navbar */
+/* Navbar.css */
+
+/* Default styles */
 .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: var(--nav-h);
+  height: 80px;
+  background: linear-gradient(to bottom, #c054ff 0%, #5274ff 100%);
+  padding: 0 20px;
+  width: 100%;
+  position: fixed !important;
+  top: 0 !important;
+  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
-  background: linear-gradient(90deg, #c054ff 0%, #5274ff 100%);
-  color: white;
-  z-index: 1200;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar.hidden {
+  transform: translateY(-100%);
+}
+
+.navbar.visible {
   transform: translateY(0);
-  transition: transform 220ms ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* hide on scroll down */
-.navbar.hidden { transform: translateY(-120%); }
-.navbar.visible { transform: translateY(0); }
-
-/* Logo */
-.navbar-logo { display:flex; align-items:center; gap:10px; color: white; }
-.footer-logo { height: 36px; width: auto; }
-.logo-text { font-weight: 700; font-size: 18px; }
-
-/* Desktop nav (visible on large screens) */
-.nav-desktop { display: flex; gap: 22px; align-items: center; }
-
-/* Links style */
-.nav-desktop a,
-.panel-links a {
+/* Links */
+.navbar a,
+.navbar-brand,
+.navbar-links a,
+.navbar-nav a {
   color: white;
+  text-decoration: none;   /* 🚫 removes underline from ALL links */
   font-weight: 600;
-  padding: 6px 4px;
-  text-decoration:none;
+  transition: color 0.3s;
 }
-.nav-desktop a:hover,
-.panel-links a:hover { color: #ffd166; }
+
+.navbar a:hover,
+.navbar-brand:hover,
+.navbar-links a:hover,
+.navbar-nav a:hover {
+  color: #ffd966;
+}
+
+.footer-logo {
+  height: 35px;
+  width: auto;
+}
+
+/* Right side buttons */
+.btnNew {
+  background: white;
+  color: #5274ff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.btnNew:hover {
+  background: #ffc107;
+  color: black;
+}
+
+/* Hamburger menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+.bar {
+  height: 3px;
+  width: 25px;
+  background-color: white;
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+.bar.open:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+.bar.open:nth-child(2) {
+  opacity: 0;
+}
+.bar.open:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .navbar {
+    height: auto;
+    padding: 15px 20px;
+  }
+
+  .navbar-container {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    padding: 15px 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+
+  .navbar-container.open {
+    display: flex;
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
 
 /* Auth (desktop) */
 .auth-desktop { display:flex; align-items:center; gap:12px; }
@@ -54,57 +143,12 @@ a { text-decoration: none; }
 .user-name { color: #ffd166; font-weight:800; }
 
 /* Buttons */
-.btnNew {
-  background: white;
-  color: #3b4bd6;
-  padding: 6px 12px;
-  border-radius: 8px;
-  font-weight: 700;
-}
+
 .btnNew.outline {
   background: transparent;
   border: 1px solid rgba(255,255,255,0.18);
   color: white;
 }
-.btnNew:hover { opacity: 0.95; }
-
-/* Hamburger (hidden on desktop) */
-/* Hamburger (mobile) - ensure vertical stacked bars */
-.hamburger {
-  display: none;                /* shown only on mobile via media query */
-  flex-direction: column;       /* stack bars vertically */
-  align-items: center;
-  justify-content: center;
-  gap: 6px;                     /* spacing between bars */
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  z-index: 1301;
-}
-
-/* Each bar is a horizontal stripe */
-.hamburger .bar {
-  display: block;
-  width: 26px;                  /* length of the bar */
-  height: 3px;                  /* thickness */
-  border-radius: 3px;
-  background-color: white;      /* adjust color if needed */
-  transition: transform 200ms ease, opacity 200ms ease;
-}
-
-/* Animated X state */
-.hamburger.open .bar:nth-child(1) {
-  transform: translateY(6px) rotate(-45deg);
-}
-.hamburger.open .bar:nth-child(2) {
-  opacity: 0;
-  transform: scaleX(0);
-}
-.hamburger.open .bar:nth-child(3) {
-  transform: translateY(-6px) rotate(45deg);
-}
-
 
 
 /* Overlay (when panel open) */
