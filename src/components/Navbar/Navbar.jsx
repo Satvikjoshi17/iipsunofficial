@@ -9,6 +9,7 @@ const Navbar = () => {
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [showNav, setShowNav] = useState(true);
+  const [showNavbar, setShowNavbar] = useState(true);
   const prevScroll = useRef(typeof window !== "undefined" ? window.pageYOffset : 0);
   const panelRef = useRef(null);
 
@@ -47,6 +48,22 @@ const Navbar = () => {
       }
       prevScroll.current = current;
     };
+    // show again on scroll up 
+      useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      if (window.scrollY < lastScrollY) {
+        setShowNavbar(true); // scrolling up → show
+      } else {
+        setShowNavbar(false); // scrolling down → hide
+      }
+      lastScrollY = window.scrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
